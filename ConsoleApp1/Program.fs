@@ -3,20 +3,48 @@
         acc
     else
         factorial
-            (n)
+            n
             (acc * (n - i))
-            (i + 1)
-            
-//printfn "%d" (factorial 0 1 0)        
+            (i + 1)      
 
 let rec fibonacci n acc1 acc2 i =
     if i = n then
         acc2
     else
         fibonacci
-            (n)
+            n
             (acc1 + acc2)
-            (acc1)
+            acc1
             (i + 1)
 
-//printfn "%d" (fibonacci 11 1 0 0)
+let rec reverseList list res =
+    if List.length list = 0 then
+        res
+    else
+        reverseList
+            (List.tail list)
+            (List.head list :: res)
+            
+let rec degreeRow n m acc num i =
+    if n + m + 1 = i then
+        reverseList acc []
+    else
+        let acc = if i < n then acc else num :: acc
+        degreeRow
+            n
+            m
+            acc
+            (num * 2)
+            (i + 1)
+                
+let rec searchNumberIndex list target i =
+    if List.length list = 0 then
+        -1
+    else if List.head list = target then
+        i
+    else
+        searchNumberIndex
+            (List.tail list)
+            target
+            (i+1)
+            
