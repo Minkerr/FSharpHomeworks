@@ -1,50 +1,59 @@
-﻿let rec factorial n acc i =
+﻿let rec factorialRecursive n acc i =
     if i = n then
         acc
     else
-        factorial
+        factorialRecursive
             n
             (acc * (n - i))
             (i + 1)      
 
-let rec fibonacci n acc1 acc2 i =
+let factorial n = factorialRecursive n 1 0
+
+let rec fibonacciRecursive n acc1 acc2 i =
     if i = n then
         acc2
     else
-        fibonacci
+        fibonacciRecursive
             n
             (acc1 + acc2)
             acc1
             (i + 1)
+            
+let fibonacci n = fibonacciRecursive n 1 0 0 
 
-let rec reverseList list res =
+let rec reverseListRecursive list res =
     if List.length list = 0 then
         res
     else
-        reverseList
+        reverseListRecursive
             (List.tail list)
             (List.head list :: res)
             
-let rec degreeRow n m acc num i =
+let reverseList list = reverseListRecursive list []
+            
+let rec degreeRowRecursive n m acc num i =
     if n + m + 1 = i then
-        reverseList acc []
+        reverseListRecursive acc []
     else
         let acc = if i < n then acc else num :: acc
-        degreeRow
+        degreeRowRecursive
             n
             m
             acc
             (num * 2)
             (i + 1)
+            
+let degreeRow n m = degreeRowRecursive n m [] 1 0 
                 
-let rec searchNumberIndex list target i =
+let rec searchNumberIndexRecursive list target i =
     if List.length list = 0 then
-        -1
+        None
     else if List.head list = target then
-        i
+        Some(i)
     else
-        searchNumberIndex
+        searchNumberIndexRecursive
             (List.tail list)
             target
             (i + 1)
           
+let searchNumberIndex list target = searchNumberIndexRecursive list target 0
