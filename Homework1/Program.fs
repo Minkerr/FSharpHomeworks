@@ -46,5 +46,5 @@ let rec searchNumberIndex list target i =
         searchNumberIndex
             (List.tail list)
             target
-            (i+1)
+            (i + 1)
             
