@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.fsproj", "{56D0FBA8-83F0-4FF3-917C-71D8CF7D6904}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Homework1", "Homework1\Homework1.fsproj", "{56D0FBA8-83F0-4FF3-917C-71D8CF7D6904}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
