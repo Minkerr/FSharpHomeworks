@@ -6,7 +6,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="AnotherModule.fs" />
+        <Compile Include="TreeMap.fs" />
+        <Compile Include="PrimeNumbers.fs" />
         <Compile Include="CountEven.fs" />
     </ItemGroup>
 

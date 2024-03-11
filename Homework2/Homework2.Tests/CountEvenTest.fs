@@ -1,13 +1,9 @@
-module CountEven.Tests 
+module Homework2.Tests.CountEven
 
 open CountEven
 open NUnit.Framework
 open FsUnit
 open FsCheck
-
-[<SetUp>]
-let Setup () =
-    ()
 
 [<Test>]
 let ``The number of even numbers in [1; 2; 3; 4; 5] is 2 by using Seq.filter`` () =

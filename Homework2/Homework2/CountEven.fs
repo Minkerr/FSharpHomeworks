@@ -11,5 +11,3 @@ let countEvenMap list =
     match number with
     | Some(number) -> number
     | _ -> Seq.length list
-
-printf "%d" (countEvenMap [0]) 
