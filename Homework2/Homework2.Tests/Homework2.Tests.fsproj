@@ -12,6 +12,7 @@
         <Compile Include="CountEvenTest.fs" />
         <Compile Include="TreeMapTest.fs" />
         <Compile Include="PrimeNumbersTest.fs" />
+        <Compile Include="PrepositionCalculateTest.fs" />
         <Compile Include="Program.fs"/>
     </ItemGroup>
 

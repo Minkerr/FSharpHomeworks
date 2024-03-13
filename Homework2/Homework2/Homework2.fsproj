@@ -8,6 +8,7 @@
     <ItemGroup>
         <Compile Include="TreeMap.fs" />
         <Compile Include="PrimeNumbers.fs" />
+        <Compile Include="PrepositionCalculate.fs" />
         <Compile Include="CountEven.fs" />
     </ItemGroup>
 
