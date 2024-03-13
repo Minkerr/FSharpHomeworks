@@ -1,4 +1,4 @@
-module Homework2.Tests.CountEven
+module CountEvenTest
 
 open CountEven
 open NUnit.Framework
