@@ -6,21 +6,27 @@ open TreeMap
 
 [<Test>]
 let ``Map empty tree should return empty tree`` () =
-    None |> mapTree (fun x -> x) |> should equal None
+    Empty |> mapTree (fun x -> x) |> should equal Empty
     
 [<Test>]
 let ``Map Tip tree should return Tip(map(2))`` () =
-    Tip(2) |> mapTree (fun x -> x * x) |> should equal (Tip(4))
+    Tree(2, Empty, Empty) |> mapTree (fun x -> x * x) |> should equal (Tree(4, Empty, Empty))
     
 [<Test>]
-let ``Map Tree(2, None, None) tree should return Tree(map(2), None, None)`` () =
-    let exp = Tree(4, Tip(9), Tip(1))
-    let act = Tree(2, Tip(3), Tip(1)) |> mapTree (fun x -> x * x)
+let ``Map Tree(2, Empty, Empty) tree should return Tree(map(2), Empty, Empty)`` () =
+    let exp = Tree(4, Tree(9, Empty, Empty), Tree(1, Empty, Empty))
+    let act = Tree(2, Tree(3, Empty, Empty), Tree(1, Empty, Empty)) |>
+              mapTree (fun x -> x * x)
     act |> should equal exp
     
 [<Test>]
 let ``Map big tree should return tree with all nodes mapped`` () =
-    let exp = Tree(1, Tree(4, None, Tree(9, Tip(16), None)), Tree(25, Tip(36), Tip(49)))
-    let act = Tree(1, Tree(2, None, Tree(3, Tip(4) , None)), Tree(5 , Tip(6) , Tip(7))) |> mapTree (fun x -> x * x)
+    let exp = Tree(1,
+                   Tree(4, Empty, Tree(9, Tree(16, Empty, Empty), Empty)),
+                   Tree(25, Tree(36, Empty, Empty), Tree(49, Empty, Empty)))
+    let act = Tree(1,
+                   Tree(2, Empty, Tree(3, Tree(4, Empty, Empty) , Empty)),
+                   Tree(5, Tree(6, Empty, Empty) , Tree(7, Empty, Empty)))
+              |> mapTree (fun x -> x * x)
     act |> should equal exp
     
