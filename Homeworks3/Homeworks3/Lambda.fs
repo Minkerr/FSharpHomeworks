@@ -38,8 +38,8 @@ let rec substitution lambda var (t : term) =
         Abs(y, substitution s var t)
     | Abs(y, s) -> Abs(newVar s t, substitution (substitution s (Var(y)) (Var(newVar s t))) var t)
 
-let betaReduction lambda t =
+let betaReduction lambda=
     match lambda with
-    | Abs(x, s) -> substitution s (Var(x)) t
+    | App(Abs(x, s), t) -> substitution s (Var(x)) t
     | _ -> lambda
     

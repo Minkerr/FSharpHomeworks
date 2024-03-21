@@ -44,7 +44,6 @@ let ``Substraction should work for variables`` () =
 [<Test>]
 let ``Substitution should work for application`` () =
     let x = Name("x")
-    let y = Name("y")
     let z = Name("z")
     let lambda1 = App(Var(x), Var(x))
     let lambda2 = Abs(z, Var(z))
@@ -72,7 +71,13 @@ let ``Substitution should work for abstraction with name conflict`` () =
     let a = Name("a")
     let x = Name("x")
     let y = Name("y")
-    let z = Name("z")
     let term1 = Abs(y, App(Var(x), Var(y)))
-    let term2 = Abs(z, Var(z))
     substitution term1 (Var(x)) (Var(y)) |> should equal (Abs(a, App(Var(y), Var(a))))
+    
+[<Test>]
+let ``Beta reduction should calculate with normal strategy`` () =
+    let x = Name("x")
+    let y = Name("y")
+    let term1 = Abs(x, Var(y))
+    let term2 = Abs(x, App(Var(x), App(Var(x), Var(x))))
+    betaReduction (App(term1, App(term2, term2))) |> should equal (Var(y))
