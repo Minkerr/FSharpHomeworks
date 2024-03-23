@@ -87,7 +87,6 @@ let ``Beta reduction should calculate with normal strategy`` () =
 let ``Beta reduction should calculate big term`` () =
     let a = Name("a")
     let b = Name("b")
-    
     let term = Var(a)
     betaReduction term |> should equal (Var(a))
 
