@@ -81,3 +81,13 @@ let ``Beta reduction should calculate with normal strategy`` () =
     let term1 = Abs(x, Var(y))
     let term2 = Abs(x, App(Var(x), App(Var(x), Var(x))))
     betaReduction (App(term1, App(term2, term2))) |> should equal (Var(y))
+    
+//((λa.(λb.b b) (λb.b b)) b) ((λc.(c b)) (λa.a))
+[<Test>]
+let ``Beta reduction should calculate big term`` () =
+    let a = Name("a")
+    let b = Name("b")
+    
+    let term = Var(a)
+    betaReduction term |> should equal (Var(a))
+
