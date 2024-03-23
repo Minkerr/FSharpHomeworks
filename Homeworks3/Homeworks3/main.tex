@@ -1,0 +1,64 @@
+\documentclass[20pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage{multirow}
+\usepackage{indentfirst}
+
+\usepackage{floatrow}
+\usepackage{hyperref}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{sidecap}
+\usepackage{adjustbox}
+\usepackage[top=16mm, right=14mm, bottom=14mm, left=14mm]{geometry}
+\ifx\pdfoutput\undefined
+\usepackage{graphicx}
+\else
+\usepackage[pdftex]{graphicx}
+\fi
+\begin{document}
+\LARGE
+
+
+{\center Task 1.} \par
+
+
+$
+((\lambda a.(\lambda b.b \; b) \; (\lambda b.b \; b)) \; b) \; ((\lambda c.(c \; b)) \; (\lambda a.a))
+ \xrightarrow[\text{$\beta$}]{} \par
+((\lambda b.b \; b) \; (\lambda b.b \; b)) \; ((\lambda c.(c \; b)) \; (\lambda a.a))
+%= \par
+%((\lambda b.b \; b) \; (\lambda b.b \; b)) \; (((\lambda a.a) \; b))
+%= \par
+%((\lambda b.b \; b) \; (\lambda b.b \; b)) \; (b)
+%= \par
+$
+\\
+\par
+{\center Task 2.} \par
+Доказать, что $S K K = I$ \\ \par
+$
+(\lambda x \; y \; z.x \; z \; (y \; z)) \; (\lambda x \; y.x) \; (\lambda x \; y.x)
+= \par
+(\lambda x.\lambda y.\lambda z.x \; z \; (y \; z)) \; (\lambda x.\lambda y.x) \; (\lambda x.\lambda y.x)
+ \xrightarrow[\text{$\beta$}]{} \par
+(\lambda t.\lambda z.(\lambda x.\lambda y.x) \; z \; (t \; z)) \; (\lambda x.\lambda y.x)
+ \xrightarrow[\text{$\beta$}]{} \par
+(\lambda z.(\lambda x.\lambda y.x) \; z \; ((\lambda x.\lambda y.x) \; z))
+ \xrightarrow[\text{$\beta$}]{} \par
+(\lambda z.(\lambda y.z) \; ((\lambda x.\lambda y.x) \; z))
+ \xrightarrow[\text{$\beta$}]{} \par
+(\lambda z.z)
+%((\lambda x.\lambda t.x) \; ((\lambda x.\lambda y.x) \; z))
+% \xrightarrow[\text{$\beta$}]{} \par
+%(\lambda t.((\lambda x.\lambda y.x) \; z))
+% \xrightarrow[\text{$\beta$}]{} \par
+%(\lambda x.\lambda y.x)
+% \xrightarrow[\text{$\beta$}]{} \par
+$
+
+\end{document}
