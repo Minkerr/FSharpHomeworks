@@ -1,6 +1,6 @@
 module Homework4.Tests.CorrectBracketSequenceTest
 
-open Homework
+open Homework4
 open NUnit.Framework
 open CorrectBracketSequence
 open FsUnit
