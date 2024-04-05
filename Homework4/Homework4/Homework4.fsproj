@@ -7,7 +7,11 @@
 
     <ItemGroup>
         <Compile Include="PointFree.fs" />
+        <Compile Include="PhoneBook.fs" />
+        <Content Include="input.txt" />
+        <Content Include="output.txt" />
         <Compile Include="CorrectBracketSequence.fs" />
+        <Compile Include="Program.fs" />
     </ItemGroup>
 
 </Project>

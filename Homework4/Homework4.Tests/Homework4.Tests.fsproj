@@ -10,6 +10,7 @@
 
     <ItemGroup>
         <Compile Include="PointFreeTest.fs" />
+        <Compile Include="PhoneBookTest.fs" />
         <Compile Include="CorrectBracketSequenceTest.fs" />
         <Compile Include="Program.fs"/>
     </ItemGroup>

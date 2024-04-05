@@ -5,10 +5,6 @@ open NUnit.Framework
 open CorrectBracketSequence
 open FsUnit
 
-[<SetUp>]
-let Setup () =
-    ()
-
 [<Test>]
 let ``Test the correctness of the string "()"`` () =
     (checkStringForCorrectBracketSequence "()") |> should equal true
