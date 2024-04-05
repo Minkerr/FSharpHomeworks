@@ -45,10 +45,14 @@ let runPhoneBook =
             printBook book
             readCommand book
         | "5" ->
-            writePhoneBookToFile book
+            printf "Enter the path:\n"
+            let path = Console.ReadLine()
+            writePhoneBookToFile path book
             readCommand book
         | "6" ->
-            let book = readPhoneBookFromFile
+            printf "Enter the path:\n"
+            let path = Console.ReadLine()
+            let book = readPhoneBookFromFile path
             readCommand book
         | _ ->
             printf "Incorrect input. Try again\n"

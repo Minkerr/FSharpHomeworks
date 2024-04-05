@@ -11,7 +11,7 @@ let ``Test adding to phonebook`` () =
     
 [<Test>]
 let ``Test finding phone by name`` () =
-    let book = addRecord ("Bob", "123") []
+    let book = [("A", "12"); ("Bob", "123"); ("C", "13")]
     findPhoneByName "Bob" book |> should equal (Some("123"))
     
 [<Test>]
@@ -21,11 +21,18 @@ let ``Test finding phone by name when element is absent`` () =
     
 [<Test>]
 let ``Test finding name by phone`` () =
-    let book = addRecord ("Bob", "123") []
+    let book = [("A", "12"); ("Bob", "123"); ("C", "13")]
     findNameByPhone "123" book |> should equal (Some("Bob"))
     
 [<Test>]
 let ``Test finding name by phone when element is absent`` () =
     let book = addRecord ("Bob", "123") []
     findNameByPhone "12" book |> should equal None
+    
+[<Test>]
+let ``Test writing and reading phonebook`` () =
+    let path = "output.txt"
+    let book = [("A", "12"); ("Bob", "123")]
+    writePhoneBookToFile path book
+    readPhoneBookFromFile path |> should contain ("A", "12")
     
