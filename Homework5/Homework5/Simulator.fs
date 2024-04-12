@@ -4,20 +4,26 @@ open System
 
 type OS = Windows | Linux | MacOS
 
+type Virus(windowsRisk, linuxRisk, macosRisk) =
+    member this.defineRisk(os: OS) =
+        match os with
+        | Windows -> windowsRisk
+        | Linux -> linuxRisk
+        | MacOS -> macosRisk
+
 type Computer(os: OS) =
     let mutable infected = false
     member this.OS = os
     member this.Infected
         with get() = infected
         and set(value) = infected <- value
-    member this.TryInfect() =
+    member this.TryInfect(risk : float) =
         let r = Random()
-        match this.OS with
-        | Windows -> infected <- (r.NextDouble() < 0.8)
-        | Linux -> infected <- (r.NextDouble() < 0.2)
-        | MacOS -> infected <- (r.NextDouble() < 0.1)
+        let result = (r.NextDouble() < risk)
+        infected <- result
+        result
 
-type Network(computers: Computer list, connections: (int * int) list) =
+type Network(computers: Computer list, connections: int list list, virus: Virus) =
     member this.Computers = computers
     member this.Connections = connections
     member private this.getInfectedComputers = (computers
@@ -26,16 +32,19 @@ type Network(computers: Computer list, connections: (int * int) list) =
     member this.Simulate() =
         let rec simulateStep infectedComputers =
             printfn "Infected computers: %A" (List.map (fun i -> i + 1) infectedComputers)
-            let newInfectedComputers =
+            let connectedComputers =
                 infectedComputers
                 |> List.collect (fun i ->
-                    connections
-                    |> List.filter (fun (a, b) -> a = i || b = i)
-                    |> List.map (fun (a, b) -> if a = i then b else a)
+                    connections[i]
                     |> List.filter (fun i -> not (List.contains i infectedComputers))
                     |> List.filter (fun i -> not computers[i].Infected)
                 )
-            if List.isEmpty newInfectedComputers then
+            let newInfectedComputers =
+                connectedComputers
+                |> List.map (fun i -> (i, computers[i]))
+                |> List.filter (fun (i, c) -> c.TryInfect(virus.defineRisk(c.OS)))
+                |> List.map fst
+            if List.isEmpty connectedComputers then
                 infectedComputers
             else
                 simulateStep (infectedComputers @ newInfectedComputers)
