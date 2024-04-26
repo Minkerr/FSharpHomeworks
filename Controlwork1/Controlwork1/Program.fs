@@ -18,4 +18,26 @@ let sumEvenFibonacciLessThanMillion () =
         else sumEvenFibonacciRec (sum + fibonacciToAdd) (i + 1)
     sumEvenFibonacciRec 0 1
 
-  
+type PriorityQueue() =
+    let mutable queue = []
+
+    member this.Enqueue(item, priority) =
+        let rec enqueueRec items newItem =
+            match items with
+            | [] -> [newItem]
+            | (_, localPriority) :: _ when priority <= localPriority -> (item, priority) :: items
+            | head :: tail -> head :: (enqueueRec tail newItem)
+        queue <- enqueueRec queue (item, priority)
+
+    member this.Dequeue() =
+        match queue with
+        | [] -> failwith "Queue is empty"
+        | head :: tail ->
+            queue <- tail
+            fst head
+
+    member this.Peek() =
+        match queue with
+        | [] -> failwith "Queue is empty"
+        | head :: _ -> fst head
+
