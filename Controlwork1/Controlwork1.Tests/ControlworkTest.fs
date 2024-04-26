@@ -22,5 +22,4 @@ let ``Test square with n = 0`` () =
     
 [<Test>]
 let ``Test sum of even fibonacci less than 1000000`` () =
-    let result = sumEvenFibonacciLessThanMillion
-    result |> should equal 1089154
+    (sumEvenFibonacciLessThanMillion ()) |> should equal 1089154

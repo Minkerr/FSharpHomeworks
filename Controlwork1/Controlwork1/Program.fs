@@ -18,5 +18,4 @@ let sumEvenFibonacciLessThanMillion () =
         else sumEvenFibonacciRec (sum + fibonacciToAdd) (i + 1)
     sumEvenFibonacciRec 0 1
 
-printf "%d" 
   
