@@ -37,7 +37,7 @@ let ``Test sum of even fibonacci less than 1000000`` () =
     (sumEvenFibonacciLessThanMillion ()) |> should equal 1089154
 
 [<Test>]
-let ``Test enqueue to priority queue`` () =
+let ``Enqueue should add element to priority queue`` () =
     let queue = PriorityQueue()
     queue.Enqueue(("a", 3))
     queue.Enqueue(("b", 1))
@@ -45,7 +45,7 @@ let ``Test enqueue to priority queue`` () =
     queue.Peek() |> should equal "b"
     
 [<Test>]
-let ``Test dequeue from priority queue`` () =
+let ``Dequeue should remove element with the lowes priority from priority queue`` () =
     let queue = PriorityQueue()
     queue.Enqueue(("a", 3))
     queue.Enqueue(("b", 1))
@@ -54,11 +54,11 @@ let ``Test dequeue from priority queue`` () =
     queue.Dequeue() |> should equal "c"
 
 [<Test>]
-let ``Test dequeue from empty priority queue`` () =
+let ``Dequeue from empty priority queue should throw exception`` () =
     let queue = PriorityQueue()
     (fun () -> queue.Dequeue()) |> should throw typeof<System.Exception>
     
 [<Test>]
-let ``Test peek from empty priority queue`` () =
+let ``Peek from empty priority queue should throw exception`` () =
     let queue = PriorityQueue()
     (fun () -> queue.Peek()) |> should throw typeof<System.Exception>

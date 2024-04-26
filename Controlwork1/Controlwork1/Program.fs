@@ -7,10 +7,10 @@ let square n =
     String.concat "\n" (List.map constructLine [1..n])
     
 let sumEvenFibonacciLessThanMillion () =
-    let rec sumEvenFibonacciRecursive sum acc1 acc2 i =
-        let numberToAdd = if acc2 % 2 = 0 then acc2 else 0
+    let rec sumEvenFibonacciRecursive sum fibonacciNext fibonacciCurrent i =
+        let numberToAdd = if fibonacciCurrent % 2 = 0 then fibonacciCurrent else 0
         if numberToAdd > 1000000 then sum
-        else sumEvenFibonacciRecursive (sum + numberToAdd) (acc1 + acc2) acc1 (i + 1)
+        else sumEvenFibonacciRecursive (sum + numberToAdd) (fibonacciNext + fibonacciCurrent) fibonacciNext (i + 1)
     sumEvenFibonacciRecursive 0 1 0 0
 
 /// <summary>
