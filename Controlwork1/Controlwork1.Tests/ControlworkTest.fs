@@ -19,3 +19,8 @@ let ``Test square with n = 4`` () =
 [<Test>]
 let ``Test square with n = 0`` () =
     (square 0) |> should equal ""
+    
+[<Test>]
+let ``Test sum of even fibonacci less than 1000000`` () =
+    let result = sumEvenFibonacciLessThanMillion
+    result |> should equal 1089154
