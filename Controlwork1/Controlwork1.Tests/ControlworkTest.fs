@@ -17,12 +17,20 @@ let ``Test square with n = 4`` () =
     (square 4) |> should equal "****\n*  *\n*  *\n****"
     
 [<Test>]
+let ``Test square with n = 5`` () =
+    (square 5) |> should equal "*****\n*   *\n*   *\n*   *\n*****"
+    
+[<Test>]
 let ``Test square with n = 0`` () =
     (square 0) |> should equal ""
     
 [<Test>]
 let ``Test square with n = -1`` () =
     (square -1) |> should equal ""
+    
+[<Test>]
+let ``Test square with n = -3`` () =
+    (square -3) |> should equal ""
     
 [<Test>]
 let ``Test sum of even fibonacci less than 1000000`` () =
@@ -49,3 +57,8 @@ let ``Test dequeue from priority queue`` () =
 let ``Test dequeue from empty priority queue`` () =
     let queue = PriorityQueue()
     (fun () -> queue.Dequeue()) |> should throw typeof<System.Exception>
+    
+[<Test>]
+let ``Test peek from empty priority queue`` () =
+    let queue = PriorityQueue()
+    (fun () -> queue.Peek()) |> should throw typeof<System.Exception>
