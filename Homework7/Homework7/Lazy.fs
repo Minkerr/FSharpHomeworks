@@ -30,7 +30,6 @@ type ConcurrentLazy<'a>(supplier : unit -> 'a) =
                     temp) 
                 
 type LockFreeLazy<'a>(supplier : unit -> 'a) =
-    let locker = obj()
     let mutable value = None
     interface ILazy<'a> with
         member this.Get() : 'a =

@@ -1,5 +1,8 @@
 ﻿module Homework7.Program
 
+open System.Net
 open Homework7.MiniCrawler
+open HtmlAgilityPack
 
-crawler "https://www.hplovecraft.com/writings/texts/"
+printf "%A" (crawler "https://example.com/")
+
