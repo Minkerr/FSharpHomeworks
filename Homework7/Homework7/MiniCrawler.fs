@@ -9,7 +9,6 @@ let crawler (url : string)  =
     let nodeCollection = doc.DocumentNode.SelectNodes("//a[@href]")
     let parseNodes (nodes : IEnumerable<HtmlNode>)=
         nodes
-        |> Seq.filter (fun node -> true)
         |> Seq.map (fun node ->
             async{
                 let link = node.Attributes["href"]
