@@ -1,5 +1,6 @@
-module Homework6.Tests
+module Homework6.Tests.RoundingTest
 
+open Homework6
 open NUnit.Framework
 open FsUnit
 

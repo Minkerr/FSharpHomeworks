@@ -10,6 +10,7 @@
 
     <ItemGroup>
         <Compile Include="RoundingTest.fs" />
+        <Compile Include="StringCalculateTest.fs" />
         <Compile Include="Program.fs"/>
     </ItemGroup>
 
