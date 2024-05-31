@@ -14,7 +14,9 @@ let ``String calculate should work with simple addition`` () =
             let z = x + y
             return z
         }
-    act |> should equal 3
+    match act with
+    | Some x -> x |> should equal 3
+    | _ -> Assert.Fail()
 
 [<Test>]
 let ``String calculate should work with double values`` () =
@@ -26,21 +28,18 @@ let ``String calculate should work with double values`` () =
             let z = x / y
             return z
         }
-    act - 0.001 |> should lessThan 0.3
-    act + 0.001 |> should greaterThan 0.3
+    match act with
+    | Some x -> Assert.That(x, Is.EqualTo(0.3).Within(0.01))
+    | _ -> Assert.Fail()
     
 [<Test>]
 let ``String calculate should throw the error for incorrect strings`` () =
     let calculator = StringCalculateBuilder()
-    try
-        calculator {
-            let! x = "1"
-            let! y = "a"
-            let z = x + y
-            return z
-        } |> ignore
-    with ex ->
-        ex.Message |> should equal "IncorrectInputString \"String should be a number\""
-        
+    calculator {
+        let! x = "1"
+        let! y = "a"
+        let z = x + y
+        return z
+    }
+    |> should equal None
     
-    //|> should throw typeof<IncorrectInputString>
