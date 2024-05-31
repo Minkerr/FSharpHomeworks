@@ -5,15 +5,11 @@ open System.IO
 let addRecord newRecord book = newRecord :: book
 
 let findPhoneByName name book =
-    let resultSeq = Seq.filter (fun x -> fst x = name) book
-    if (Seq.length resultSeq = 0) then None
-    else Some(snd (Seq.head resultSeq))
+    Seq.filter (fun x -> fst x = name) book
       
 let findNameByPhone phone book =
-    let resultSeq = Seq.filter (fun x -> snd x = phone) book
-    if (Seq.length resultSeq = 0) then None
-    else Some(fst (Seq.head resultSeq))
-
+    List.filter (fun x -> snd x = phone) book
+    
 let printBook book = List.iter (fun (name, phone) -> printfn "%s — %s" name phone) book
 
 let writePhoneBookToFile path book =

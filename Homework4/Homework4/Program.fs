@@ -29,17 +29,13 @@ let runPhoneBook =
             printf "Enter the name:\n"
             let name = Console.ReadLine()
             let result = findPhoneByName name book
-            match result with
-            |Some(x) -> printf $"The found phone is %s{x}\n"
-            |None -> printf "There is no record with such name\n"
+            printf $"Result: %A{result}\n"
             readCommand book
         | "3" ->
             printf "Enter the name:\n"
             let phone = Console.ReadLine()
             let result = findNameByPhone phone book
-            match result with
-            |Some(x) -> printf $"The found name is %s{x}\n"
-            |None -> printf "There is no record with such phone\n"
+            printf $"Result: %A{result}\n"
             readCommand book
         | "4" ->
             printBook book

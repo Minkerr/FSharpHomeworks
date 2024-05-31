@@ -13,7 +13,9 @@
         <Compile Include="PhoneBookTest.fs" />
         <Compile Include="CorrectBracketSequenceTest.fs" />
         <Compile Include="Program.fs"/>
+        <Content Include="bin\Debug\net8.0\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll" />
         <Content Include="input.txt" />
+        <Content Include="output.txt" />
     </ItemGroup>
 
     <ItemGroup>
