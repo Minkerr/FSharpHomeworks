@@ -8,8 +8,8 @@ type Term =
 let rec fv lambda =
     match lambda with
     | Var(x) -> Set.ofList [Var(x)]
-    | Abs(x, y) -> Set.difference (fv(y)) (Set.ofList [Var(x)])
     | App(x, y) -> Set.union (fv(x)) (fv(y)) 
+    | Abs(x, y) -> Set.difference (fv(y)) (Set.ofList [Var(x)])
     
 let rec bv lambda =
     match lambda with
@@ -36,10 +36,11 @@ let rec substitution lambda var (t : Term) =
         Abs(y, substitution s var t)
     | Abs(y, s) -> Abs(newVar s t, substitution (substitution s (Var(y)) (Var(newVar s t))) var t)
 
-let betaReductionStep lambda=
+let rec betaReductionStep lambda=
     match lambda with
     //| App(Abs(x, s), App(t1, t2)) -> App(substitution s (Var(x)) t1, t2)
     | App(Abs(x, s), t) -> substitution s (Var(x)) t
+    //| App(x, t) -> App(betaReductionStep x, t)
     //| App(t, Abs(x, s)) -> substitution s (Var(x)) t
     | _ -> lambda
     

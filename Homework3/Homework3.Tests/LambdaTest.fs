@@ -82,15 +82,14 @@ let ``Beta reduction should calculate with normal strategy`` () =
     betaReductionStep (App(term1, App(term2, term2))) |> should equal (Var(y))
     
 [<Test>]
-let ``S S K = I test`` () =
+let ``S K K = I test`` () =
     let x = "x"
     let y = "y"
     let z = "z"
     let s = Abs(x, Abs(y, Abs(z,
             App(App(Var(x), Var(z)), App(Var(y), Var(z))))))
     let k = Abs(x, Abs(y, Var(x)))
-    betaReductionStep (App(s, App(k, k)))
-    //|> betaReductionStep
-    |> should equal (Var(y))
+    betaReduce (App(s, App(k, k)))
+    |> should equal (Abs(x, Var(y)))
     
 
