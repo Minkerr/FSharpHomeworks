@@ -1,17 +1,21 @@
 module PrepositionCalculate
-
+    
+type BinaryOperation =
+    | Add 
+    | Subtract 
+    | Multiply 
+    | Divide
+    
 type Proposition =
     | Number of int
-    | BinaryOperation of Proposition * string * Proposition
-    
-let rec calculate prep =
-    match prep with
+    | BinaryOperation of Proposition * BinaryOperation * Proposition
+
+let rec calculate root =
+    match root with
     | Number(x) -> x
     | BinaryOperation(l, o, r) ->
         match o with
-        | "+" -> calculate l + calculate r
-        | "-" -> calculate l - calculate r
-        | "*" -> calculate l * calculate r
-        | "/" -> calculate l / calculate r
-        | _ -> failwith "Incorrect operation"
-
+        | Add -> calculate l + calculate r
+        | Subtract -> calculate l - calculate r
+        | Multiply -> calculate l * calculate r
+        | Divide -> calculate l / calculate r
