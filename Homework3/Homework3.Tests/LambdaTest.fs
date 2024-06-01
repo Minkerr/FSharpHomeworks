@@ -79,7 +79,7 @@ let ``Beta reduction should calculate with normal strategy`` () =
     let y = "y"
     let term1 = Abs(x, Var(y))
     let term2 = Abs(x, App(Var(x), App(Var(x), Var(x))))
-    betaReduction (App(term1, App(term2, term2))) |> should equal (Var(y))
+    betaReductionStep (App(term1, App(term2, term2))) |> should equal (Var(y))
     
 [<Test>]
 let ``S S K = I test`` () =
@@ -89,10 +89,8 @@ let ``S S K = I test`` () =
     let s = Abs(x, Abs(y, Abs(z,
             App(App(Var(x), Var(z)), App(Var(y), Var(z))))))
     let k = Abs(x, Abs(y, Var(x)))
-    betaReduction (App(s, App(k, k)))
-    |> betaReduction
-    |> betaReduction
-    |> betaReduction
+    betaReductionStep (App(s, App(k, k)))
+    //|> betaReductionStep
     |> should equal (Var(y))
     
 

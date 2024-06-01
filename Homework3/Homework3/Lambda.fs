@@ -36,10 +36,17 @@ let rec substitution lambda var (t : Term) =
         Abs(y, substitution s var t)
     | Abs(y, s) -> Abs(newVar s t, substitution (substitution s (Var(y)) (Var(newVar s t))) var t)
 
-let betaReduction lambda=
+let betaReductionStep lambda=
     match lambda with
     //| App(Abs(x, s), App(t1, t2)) -> App(substitution s (Var(x)) t1, t2)
     | App(Abs(x, s), t) -> substitution s (Var(x)) t
     //| App(t, Abs(x, s)) -> substitution s (Var(x)) t
     | _ -> lambda
     
+let rec betaReduce lambda =
+    let next = betaReductionStep lambda
+    if lambda = next then
+        lambda
+    else
+        betaReduce next
+        
