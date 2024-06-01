@@ -12,14 +12,16 @@ let crawler (url : string)  =
         |> Seq.map (fun node ->
             async{
                 let link = node.Attributes["href"]
+                let page = web.Load(link.Value).DocumentNode.InnerText
                 if link <> null && link.Value.Substring(0, 8) = "https://" then
                     let result =
                         try 
-                            web.Load(link.Value).DocumentNode.InnerText.Length
+                            let result = page.Length
+                            (link.Value, Some result)
                         with
-                        | e -> -1
+                        | e -> (link.Value, None)
                     return result
-                else return -1
+                else return (link.Value, None)
             }
         )
         |> Async.Parallel
