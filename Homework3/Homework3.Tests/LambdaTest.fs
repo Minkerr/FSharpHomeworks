@@ -89,6 +89,10 @@ let ``S S K = I test`` () =
     let s = Abs(x, Abs(y, Abs(z,
             App(App(Var(x), Var(z)), App(Var(y), Var(z))))))
     let k = Abs(x, Abs(y, Var(x)))
-    betaReduction (App(s, App(k, k))) |> should equal (Var(y))
+    betaReduction (App(s, App(k, k)))
+    |> betaReduction
+    |> betaReduction
+    |> betaReduction
+    |> should equal (Var(y))
     
 
