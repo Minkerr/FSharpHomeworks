@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Controlwork1", "Controlwork1\Controlwork1.fsproj", "{A5E981C3-0D8B-4E83-B4A1-4E927BB5EAEC}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Controlwork1.Tests", "Controlwork1.Tests\Controlwork1.Tests.fsproj", "{60AF4A5C-FD1C-4D1B-A12B-382093BF682D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5E981C3-0D8B-4E83-B4A1-4E927BB5EAEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5E981C3-0D8B-4E83-B4A1-4E927BB5EAEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5E981C3-0D8B-4E83-B4A1-4E927BB5EAEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5E981C3-0D8B-4E83-B4A1-4E927BB5EAEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60AF4A5C-FD1C-4D1B-A12B-382093BF682D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60AF4A5C-FD1C-4D1B-A12B-382093BF682D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60AF4A5C-FD1C-4D1B-A12B-382093BF682D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60AF4A5C-FD1C-4D1B-A12B-382093BF682D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
