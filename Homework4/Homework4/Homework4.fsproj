@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="PointFree.fs" />
+        <Compile Include="PhoneBook.fs" />
+        <Content Include="output.txt" />
+        <Compile Include="CorrectBracketSequence.fs" />
+        <Compile Include="Program.fs" />
+    </ItemGroup>
+
+</Project>
